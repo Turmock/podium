@@ -1,5 +1,5 @@
 import "../support/commands"
-import 'cypress-iframe'
+
 describe('Podium Smoke Tests', () => {
   
   it('check that the website loads', () => {
@@ -74,6 +74,11 @@ describe('Podium Smoke Tests', () => {
       const $name = $podiummodal.contents().find('#Name')  
       cy.wrap($name).type('Test Name')
     })
+    cy.get('#podium-bubble').then(($iframe) => {
+      const $button = $iframe.contents().find('#main > div > div > div > div > button')
+      cy.wrap($button).click()
+    })
+  
 
   })
 
